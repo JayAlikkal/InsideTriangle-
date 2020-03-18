@@ -1,0 +1,61 @@
+public class Main
+{
+	public static void main(String[] args) {
+	java.util.Scanner consoleIn = new java.util.Scanner(System.in);
+		
+		System.out.println
+			("Enter the y-coordinate of the first triangle point:");
+		double y1 = consoleIn.nextDouble();
+		
+		System.out.println
+			("Enter the x-coordinate of the second triangle point:");
+		double x2 = consoleIn.nextDouble();
+		
+		System.out.println
+			("Enter the x- and y-coordinates of the point to test:");
+		double xTest = consoleIn.nextDouble();
+		double yTest = consoleIn.nextDouble();
+		
+		
+		double slope = -y1 / x2;
+		double intercept = y1;
+		double yOnTriangle = slope*xTest + intercept;
+		
+		boolean inside = false;
+		
+		if (y1 >= 0) {
+			if (x2 >= 0) {
+				
+				if (xTest >= 0 && xTest <= x2 && yTest >= 0 && yTest <= y1
+						&& yTest <= yOnTriangle)
+					inside = true;
+			}
+			else {
+				
+				if (xTest <= 0 && xTest >= x2 && yTest >= 0 && yTest <= y1
+						&& yTest <= yOnTriangle)
+					inside = true;
+			}
+		}
+		else {
+			if (x2 >= 0) {
+			
+				if (xTest >= 0 && xTest <= x2 && yTest <= 0 && yTest >= y1
+						&& yTest >= yOnTriangle)
+					inside = true;
+			}
+			else {
+		
+				if (xTest <= 0 && xTest >= x2 && yTest <= 0 && yTest >= y1
+						&& yTest >= yOnTriangle)
+					inside = true;
+			}
+		}
+		
+		if (inside)
+			System.out.println("The test point is inside the triangle");
+		else
+			System.out.println("The test point is outside the triangle");
+	}
+}
+	
